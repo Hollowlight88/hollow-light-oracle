@@ -1,9 +1,63 @@
----
-import Layout from '../layouts/RitualLayout.astro';
----
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clarity – Box Breathing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background: #111;
+        color: #eee;
+        font-family: Georgia, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+      }
 
-<Layout>
-  <h1>Clarity</h1>
-  <p>Breathe. Witness. Enter the stillness that reveals.</p>
-  <a href="/" style="color: cyan;">Return to Gateway</a>
-</Layout>
+      .breath-box {
+        font-size: 2rem;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 4s infinite steps(1, end);
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 1; content: "Inhale"; }
+        25% { opacity: 1; content: "Hold"; }
+        50% { opacity: 1; content: "Exhale"; }
+        75% { opacity: 1; content: "Hold"; }
+        100% { opacity: 1; content: "Inhale"; }
+      }
+
+      .phase {
+        animation: box-breath 16s linear infinite;
+      }
+
+      @keyframes box-breath {
+        0%, 24% { content: "Inhale"; }
+        25%, 49% { content: "Hold"; }
+        50%, 74% { content: "Exhale"; }
+        75%, 100% { content: "Hold"; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Clarity Ritual</h1>
+    <div id="breath" class="breath-box phase">Inhale</div>
+
+    <a href="/" style="margin-top: 2rem; color: cyan;">Return to Gateway</a>
+
+    <script>
+      const breathElement = document.getElementById("breath");
+      const phases = ["Inhale", "Hold", "Exhale", "Hold"];
+      let index = 0;
+
+      setInterval(() => {
+        breathElement.textContent = phases[index];
+        index = (index + 1) % phases.length;
+      }, 4000);
+    </script>
+  </body>
+</html>
