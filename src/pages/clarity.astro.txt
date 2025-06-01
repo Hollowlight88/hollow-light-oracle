@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/RitualLayout.astro';
+---
+
+<Layout>
+  <h1>Clarity</h1>
+  <p>Breathe. Witness. Enter the stillness that reveals.</p>
+</Layout>

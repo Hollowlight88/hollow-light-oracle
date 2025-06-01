@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/RitualLayout.astro';
+---
+
+<Layout>
+  <h1>Hollow Light Oracle</h1>
+  <p>Welcome to the gateway. Begin the journey at <a href="/clarity">/clarity</a>.</p>
+</Layout>
