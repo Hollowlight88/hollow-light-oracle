@@ -18,7 +18,7 @@
       }
 
       h1 {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
       }
 
       .breath-text {
@@ -31,11 +31,15 @@
         opacity: 0.3;
       }
 
+      .controls {
+        margin-top: 2rem;
+        font-size: 1rem;
+      }
+
       a {
-        margin-top: 3rem;
         color: cyan;
         text-decoration: none;
-        font-size: 1rem;
+        margin-top: 2rem;
       }
 
       a:hover {
@@ -46,20 +50,46 @@
   <body>
     <h1>Clarity Ritual</h1>
     <div id="breathText" class="breath-text">Inhale</div>
+
+    <div class="controls">
+      <button id="toggleSound">🔊 Sound: On</button>
+    </div>
+
     <a href="/">Return to Gateway</a>
+
+    <audio id="inhaleSound" src="/sounds/inhale.mp3" preload="auto"></audio>
+    <audio id="exhaleSound" src="/sounds/exhale.mp3" preload="auto"></audio>
 
     <script>
       const breathText = document.getElementById("breathText");
+      const inhaleSound = document.getElementById("inhaleSound");
+      const exhaleSound = document.getElementById("exhaleSound");
+      const toggleSound = document.getElementById("toggleSound");
+
       const phases = ["Inhale", "Hold", "Exhale", "Hold"];
       let index = 0;
+      let soundEnabled = true;
+
+      toggleSound.onclick = () => {
+        soundEnabled = !soundEnabled;
+        toggleSound.textContent = soundEnabled ? "🔊 Sound: On" : "🔇 Sound: Off";
+      };
 
       setInterval(() => {
+        const phase = phases[index];
         breathText.classList.add("fade");
+
         setTimeout(() => {
-          breathText.textContent = phases[index];
+          breathText.textContent = phase;
           breathText.classList.remove("fade");
+
+          if (soundEnabled) {
+            if (phase === "Inhale") inhaleSound.play();
+            if (phase === "Exhale") exhaleSound.play();
+          }
+
           index = (index + 1) % phases.length;
-        }, 500); // wait for fade out
+        }, 500);
       }, 4000);
     </script>
   </body>
