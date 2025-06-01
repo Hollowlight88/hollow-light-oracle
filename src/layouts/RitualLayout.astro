@@ -1,5 +1,4 @@
 ---
-const { children } = Astro.props;
 ---
 
 <html lang="en">
@@ -10,7 +9,8 @@ const { children } = Astro.props;
   </head>
   <body style="background: #111; color: #eee; font-family: Georgia, serif; padding: 2rem;">
     <main>
-      {children}
+      <slot />
     </main>
   </body>
 </html>
+
