@@ -1,0 +1,52 @@
+---
+import RitualLayout from '../layouts/RitualLayout.astro';
+
+const title = "Hollowing";
+const description = "A ritual to dissolve the self and become light enough to vanish.";
+const backgroundImage = "/images/hollowingbg.png";
+---
+
+<RitualLayout title={title} description={description} backgroundImage={backgroundImage}>
+  <div class="ritual-body">
+    <h1 class="ritual-title">Hollowing</h1>
+    <p>To hollow is to release what once filled you. This ritual is a letting go.</p>
+
+    <ul>
+      <li>Step into silence.</li>
+      <li>Let every thought fall through you like light through a sieve.</li>
+      <li>Breathe. Release. Wait.</li>
+      <li>Become less than name. Become less than time.</li>
+    </ul>
+
+    <p>You are not empty. You are spacious.</p>
+  </div>
+
+  <style>
+    body {
+      background-color: #111;
+    }
+
+    .ritual-body {
+      border: 2px dashed red; /* TEMP for debugging */
+      color: white;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    h1.ritual-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</RitualLayout>
