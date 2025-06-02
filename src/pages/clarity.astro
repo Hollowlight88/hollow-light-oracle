@@ -1,97 +1,40 @@
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Clarity Ritual</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        background-color: #111;
-        color: #eee;
-        font-family: Georgia, serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+---
+import RitualLayout from '../layouts/RitualLayout.astro';
+---
 
-      h1 {
-        margin-bottom: 2rem;
-      }
-
-      .breath-text {
-        font-size: 3rem;
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
-      }
-
-      .fade {
-        opacity: 0.3;
-      }
-
-      .controls {
-        margin-top: 2rem;
-        font-size: 1rem;
-      }
-
-      a {
-        color: cyan;
-        text-decoration: none;
-        margin-top: 2rem;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Clarity Ritual</h1>
-    <div id="breathText" class="breath-text">Inhale</div>
-
-    <div class="controls">
-      <button id="toggleSound">🔊 Sound: On</button>
+<RitualLayout title="Clarity">
+  <div class="clarity-background">
+    <div class="ritual-content">
+      <!-- Clarity ritual content goes here -->
     </div>
+  </div>
 
-    <a href="/">Return to Gateway</a>
+  <style>
+    .clarity-background {
+      background-image: url('/images/monk.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    <audio id="inhaleSound" src="/sounds/inhale.mp3" preload="auto"></audio>
-    <audio id="exhaleSound" src="/sounds/exhale.mp3" preload="auto"></audio>
+    .ritual-content {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-    <script>
-      const breathText = document.getElementById("breathText");
-      const inhaleSound = document.getElementById("inhaleSound");
-      const exhaleSound = document.getElementById("exhaleSound");
-      const toggleSound = document.getElementById("toggleSound");
-
-      const phases = ["Inhale", "Hold", "Exhale", "Hold"];
-      let index = 0;
-      let soundEnabled = true;
-
-      toggleSound.onclick = () => {
-        soundEnabled = !soundEnabled;
-        toggleSound.textContent = soundEnabled ? "🔊 Sound: On" : "🔇 Sound: Off";
-      };
-
-      setInterval(() => {
-        const phase = phases[index];
-        breathText.classList.add("fade");
-
-        setTimeout(() => {
-          breathText.textContent = phase;
-          breathText.classList.remove("fade");
-
-          if (soundEnabled) {
-            if (phase === "Inhale") inhaleSound.play();
-            if (phase === "Exhale") exhaleSound.play();
-          }
-
-          index = (index + 1) % phases.length;
-        }, 500);
-      }, 4000);
-    </script>
-  </body>
-</html>
-
+    @media (max-width: 768px) {
+      .clarity-background {
+        background-position: top;
+      }
+    }
+  </style>
+</RitualLayout>
