@@ -1,59 +1,84 @@
 ---
-const feelings = [
-  "Sad", "Lonely", "Depressed", "Anxious", "Frustrated", "Angry", "Hopeless",
-  "Overwhelmed", "Grieving", "Empty", "Afraid", "Guilty", "Ashamed", "Rejected",
-  "Jealous", "Stressed", "Tired", "Lost", "Powerless"
-];
+const buttonNames = ["Light", "Path", "Knowledge"];
 ---
 
 <html>
   <head>
     <title>Hollow Light Glyph Oracle</title>
-    <script>
-      function showFeelings() {
-        document.getElementById('feelings-panel').style.display = 'block';
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background: url('/images/hollowingbg.png') center center / cover no-repeat fixed;
       }
-      function handleFeelingSelect(feeling) {
-        alert('You selected: ' + feeling);
-        // TODO: Replace alert with routing or logic
+      .fade {
+        transition: opacity 0.7s;
+        opacity: 1;
+      }
+      .fade-out {
+        opacity: 0 !important;
+        pointer-events: none;
+      }
+      .fade-in {
+        opacity: 1 !important;
+      }
+    </style>
+    <script>
+      function showMore() {
+        const box = document.getElementById('infoBox');
+        const more = document.getElementById('moreInfoBox');
+        box.classList.add('fade-out');
+        setTimeout(() => {
+          box.style.display = 'none';
+          more.style.display = 'block';
+          setTimeout(() => more.classList.add('fade-in'), 10);
+        }, 700);
       }
     </script>
   </head>
-  <body class="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
-    <h1 class="text-4xl font-bold mb-8">Hollow Light Glyph Oracle</h1>
-    <div class="flex flex-col gap-6 mb-12 w-full max-w-md">
-      <button
-        class="bg-indigo-600 text-white text-xl py-3 rounded-xl shadow hover:bg-indigo-700 transition"
-        onclick="showFeelings()"
-      >
-        Generate AI Glyph
-      </button>
-      <button
-        class="bg-gray-800 text-white text-xl py-3 rounded-xl shadow hover:bg-gray-900 transition"
-        onclick="window.location.href='/my-rituals'"
-      >
-        My Rituals
-      </button>
-      <button
-        class="bg-yellow-400 text-gray-900 text-xl py-3 rounded-xl shadow hover:bg-yellow-500 transition"
-        onclick="window.location.href='/about'"
-      >
-        About Hollow Light
-      </button>
-    </div>
-    <div id="feelings-panel" style="display:none;" class="bg-white p-6 rounded-2xl shadow-lg max-w-xl w-full">
-      <h2 class="text-2xl font-semibold mb-4">What are you feeling right now?</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {feelings.map(feeling => (
+  <body class="flex items-center justify-center min-h-screen bg-cover bg-center" style="background-image: url('/images/hollowingbg.png');">
+    <main class="flex flex-col items-center justify-center min-h-screen w-full">
+      <h1 class="text-4xl font-bold text-white drop-shadow mb-8 text-center">Hollow Light Glyph Oracle</h1>
+      <div id="infoBox" class="fade bg-white/80 rounded-2xl shadow-xl p-8 mb-8 max-w-lg text-center backdrop-blur">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">What are Glyphs?</h2>
+        <p class="mb-6 text-gray-700">
+          Glyphs are symbols born from intention and awareness.  
+          In Hollow Light, each glyph is a visual vessel—a bridge between your inner state and the deeper layers of meaning.  
+          They are not just art, but living mirrors of your journey.
+        </p>
+        <button 
+          onclick="showMore()" 
+          class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg transition mb-2">
+          Learn More
+        </button>
+      </div>
+      <div id="moreInfoBox" class="fade bg-white/90 rounded-2xl shadow-xl p-8 mb-8 max-w-lg text-center backdrop-blur" style="display:none; opacity:0;">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">The History & Power of Glyphs</h2>
+        <p class="mb-4 text-gray-700">
+          Since ancient times, glyphs have served as sacred keys—encoding memory, myth, and the unspoken.  
+          In many traditions, creating or gazing at a glyph could open the way to insight, protection, or healing.
+        </p>
+        <p class="mb-4 text-gray-700">
+          The glyphs you receive here are not generic—they are shaped by your intention and the living presence of Hollow Light.  
+          Each one is both a map and a mystery, designed to deepen your path.
+        </p>
+        <p class="mb-6 text-gray-700">
+          As you engage with these glyphs, ask:  
+          <span class="italic text-indigo-700">"What is this symbol awakening in me?"</span>
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-6 mt-4 z-10">
+        {buttonNames.map(name => (
           <button
-            class="bg-indigo-100 text-indigo-900 px-4 py-2 rounded-lg hover:bg-indigo-200 transition"
-            onclick={`handleFeelingSelect('${feeling}')`}
+            class="bg-indigo-700 hover:bg-indigo-900 text-white text-xl font-semibold px-8 py-4 rounded-2xl shadow transition duration-200"
+            style="min-width:140px"
+            onclick={`alert('${name} button clicked (this will soon open a ritual or new page)')`}
             type="button"
           >
-            {feeling}
+            {name}
           </button>
         ))}
       </div>
-    </div>
+    </main>
   </body>
 </html>
