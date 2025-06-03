@@ -1,13 +1,20 @@
 ---
 import rituals from '../../data/rituals.json';
 
+export async function getStaticPaths() {
+  return rituals.map((ritual) => ({
+    params: { slug: ritual.slug }
+  }));
+}
+
 const { slug } = Astro.params;
 const ritual = rituals.find(r => r.slug === slug);
 
 if (!ritual) {
-  throw new Error('Ritual not found');
+  throw new Error("Ritual not found.");
 }
 ---
+
 
 <html>
   <head>
