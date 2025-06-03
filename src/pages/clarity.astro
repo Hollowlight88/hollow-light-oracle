@@ -1,7 +1,7 @@
 ---
 import RitualLayout from '../layouts/RitualLayout.astro';
 import BoxBreathing from '../components/BoxBreathing.jsx';
-// Add more interactive imports here as you create new ones
+
 const title = "Clarity";
 const description = "A ritual to clear the mind and return to presence.";
 const backgroundImage = "/images/monk.png";
@@ -13,13 +13,9 @@ const backgroundImage = "/images/monk.png";
     <p class="ritual-text">
       Let clarity arise with each breath. Return to the center of your awareness.
     </p>
-    
+
     <div class="breathing-center">
       <BoxBreathing client:visible />
-      {/** 
-        If you add more React components, do it here and use 
-        <YourComponent client:visible /> 
-      **/}
     </div>
 
     <p class="ritual-instructions">
@@ -58,4 +54,3 @@ const backgroundImage = "/images/monk.png";
     }
   </style>
 </RitualLayout>
-

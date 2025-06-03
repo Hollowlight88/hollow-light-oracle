@@ -1,16 +1,34 @@
 ---
+const { title, description, backgroundImage } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Hollow Light Oracle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background: url({backgroundImage}) no-repeat center center fixed;
+        background-size: cover;
+        font-family: system-ui, sans-serif;
+      }
+      .ritual-layout {
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.3);
+        box-sizing: border-box;
+      }
+    </style>
   </head>
-  <body style="background: #111; color: #eee; font-family: Georgia, serif; padding: 2rem;">
-    <main>
+  <body>
+    <div class="ritual-layout">
       <slot />
-    </main>
+    </div>
   </body>
 </html>
-
