@@ -1,5 +1,10 @@
 ---
-const buttonNames = ["Light", "Path", "Knowledge"];
+const buttons = [
+  { label: "Light", slug: "light" },
+  { label: "Path", slug: "path" },
+  { label: "Knowledge", slug: "knowledge" },
+  { label: "Box Breathing", slug: "clarity", green: true }
+];
 ---
 
 <html>
@@ -117,9 +122,6 @@ const buttonNames = ["Light", "Path", "Knowledge"];
           setTimeout(() => more.classList.add('fade-in'), 10);
         }, 700);
       }
-      function goToClarity() {
-        window.location.href = "/ritual/clarity";
-      }
     </script>
   </head>
   <body>
@@ -154,23 +156,16 @@ const buttonNames = ["Light", "Path", "Knowledge"];
       </div>
       <!-- Button Group -->
       <div class="btn-group glyph-box">
-        {buttonNames.map(name => (
+        {buttons.map(btn => (
           <button
             class="glyph-btn"
-            onclick={`alert('${name} button clicked (link coming soon)')`}
+            style={btn.green ? "background:linear-gradient(90deg,#34d399 30%,#10b981 100%);" : ""}
+            onclick={`window.location.href='/ritual/${btn.slug}'`}
             type="button"
           >
-            {name}
+            {btn.label}
           </button>
         ))}
-        <button
-          class="glyph-btn"
-          style="background:linear-gradient(90deg,#34d399 30%,#10b981 100%);"
-          onclick="goToClarity()"
-          type="button"
-        >
-          Box Breathing
-        </button>
       </div>
     </div>
   </body>
