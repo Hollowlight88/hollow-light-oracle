@@ -1,5 +1,6 @@
 ---
-import rituals from '../../rituals.json';
+import rituals from '../../data/rituals.json';
+
 
 const { intent } = Astro.params;
 const ritual = rituals.find(r => r.slug === intent);
