@@ -11,8 +11,6 @@ const { title, description, backgroundImage } = Astro.props;
       body {
         min-height: 100vh;
         margin: 0;
-        background: url({backgroundImage}) no-repeat center center fixed;
-        background-size: cover;
         font-family: system-ui, sans-serif;
       }
       .ritual-layout {
@@ -21,14 +19,15 @@ const { title, description, backgroundImage } = Astro.props;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.3); /* dim overlay if you want */
         box-sizing: border-box;
       }
     </style>
   </head>
-  <body>
+  <body style={`background: url('${backgroundImage}') no-repeat center center fixed; background-size: cover;`}>
     <div class="ritual-layout">
       <slot />
     </div>
   </body>
 </html>
+
