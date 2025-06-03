@@ -22,6 +22,52 @@ const buttonNames = ["Light", "Path", "Knowledge"];
       .fade-in {
         opacity: 1 !important;
       }
+      .center-outer {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .btn-group {
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        justify-content: center;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 1000px) {
+        .btn-group {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: center;
+        }
+      }
+      .glyph-box {
+        width: 720px;
+        max-width: 97vw;
+      }
+      .glyph-btn {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #6366f1 30%, #7c3aed 100%);
+        color: white;
+        border: none;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 24px rgba(92,72,254,0.08);
+        padding: 2rem 0;
+        width: 180px;
+        min-width: 130px;
+        min-height: 90px;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s;
+        margin-bottom: 0;
+      }
+      .glyph-btn:hover {
+        background: linear-gradient(90deg, #7c3aed 20%, #6366f1 100%);
+        box-shadow: 0 6px 32px rgba(76,72,254,0.16);
+      }
     </style>
     <script>
       function showMore() {
@@ -34,51 +80,65 @@ const buttonNames = ["Light", "Path", "Knowledge"];
           setTimeout(() => more.classList.add('fade-in'), 10);
         }, 700);
       }
+      function goToClarity() {
+        window.location.href = "/ritual/clarity";
+      }
     </script>
   </head>
-  <body class="flex items-center justify-center min-h-screen bg-cover bg-center" style="background-image: url('/images/hollowingbg.png');">
-    <main class="flex flex-col items-center justify-center min-h-screen w-full">
+  <body>
+    <div class="center-outer">
       <h1 class="text-4xl font-bold text-white drop-shadow mb-8 text-center">Hollow Light Glyph Oracle</h1>
-      <div id="infoBox" class="fade bg-white/80 rounded-2xl shadow-xl p-8 mb-8 max-w-lg text-center backdrop-blur">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800">What are Glyphs?</h2>
-        <p class="mb-6 text-gray-700">
-          Glyphs are symbols born from intention and awareness.  
-          In Hollow Light, each glyph is a visual vessel—a bridge between your inner state and the deeper layers of meaning.  
-          They are not just art, but living mirrors of your journey.
-        </p>
-        <button 
-          onclick="showMore()" 
-          class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg transition mb-2">
-          Learn More
-        </button>
+      <!-- Info Box -->
+      <div class="glyph-box mb-6">
+        <div id="infoBox" class="fade bg-white/90 rounded-2xl shadow-xl p-8 text-center backdrop-blur">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-800">What are Glyphs?</h2>
+          <p class="mb-6 text-gray-700">
+            Glyphs are symbols born from intention and awareness.<br>
+            In Hollow Light, each glyph is a visual vessel—a bridge between your inner state and the deeper layers of meaning.<br>
+            They are not just art, but living mirrors of your journey.
+          </p>
+          <button 
+            onclick="showMore()" 
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg transition mb-2">
+            Learn More
+          </button>
+        </div>
+        <div id="moreInfoBox" class="fade bg-white/95 rounded-2xl shadow-xl p-8 text-center backdrop-blur" style="display:none; opacity:0;">
+          <h2 class="text-2xl font-semibold mb-4 text-gray-800">The History & Power of Glyphs</h2>
+          <p class="mb-4 text-gray-700">
+            Since ancient times, glyphs have served as sacred keys—encoding memory, myth, and the unspoken.<br>
+            In many traditions, creating or gazing at a glyph could open the way to insight, protection, or healing.
+          </p>
+          <p class="mb-4 text-gray-700">
+            The glyphs you receive here are not generic—they are shaped by your intention and the living presence of Hollow Light.<br>
+            Each one is both a map and a mystery, designed to deepen your path.
+          </p>
+          <p class="mb-6 text-gray-700">
+            As you engage with these glyphs, ask:<br>
+            <span class="italic text-indigo-700">"What is this symbol awakening in me?"</span>
+          </p>
+        </div>
       </div>
-      <div id="moreInfoBox" class="fade bg-white/90 rounded-2xl shadow-xl p-8 mb-8 max-w-lg text-center backdrop-blur" style="display:none; opacity:0;">
-        <h2 class="text-2xl font-semibold mb-4 text-gray-800">The History & Power of Glyphs</h2>
-        <p class="mb-4 text-gray-700">
-          Since ancient times, glyphs have served as sacred keys—encoding memory, myth, and the unspoken.  
-          In many traditions, creating or gazing at a glyph could open the way to insight, protection, or healing.
-        </p>
-        <p class="mb-4 text-gray-700">
-          The glyphs you receive here are not generic—they are shaped by your intention and the living presence of Hollow Light.  
-          Each one is both a map and a mystery, designed to deepen your path.
-        </p>
-        <p class="mb-6 text-gray-700">
-          As you engage with these glyphs, ask:  
-          <span class="italic text-indigo-700">"What is this symbol awakening in me?"</span>
-        </p>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-6 mt-4 z-10">
+      <!-- Button Group -->
+      <div class="btn-group glyph-box">
         {buttonNames.map(name => (
           <button
-            class="bg-indigo-700 hover:bg-indigo-900 text-white text-xl font-semibold px-8 py-4 rounded-2xl shadow transition duration-200"
-            style="min-width:140px"
-            onclick={`alert('${name} button clicked (this will soon open a ritual or new page)')`}
+            class="glyph-btn"
+            onclick={`alert('${name} button clicked (link coming soon)')`}
             type="button"
           >
             {name}
           </button>
         ))}
+        <button
+          class="glyph-btn"
+          style="background:linear-gradient(90deg,#34d399 30%,#10b981 100%);"
+          onclick="goToClarity()"
+          type="button"
+        >
+          Box Breathing
+        </button>
       </div>
-    </main>
+    </div>
   </body>
 </html>
