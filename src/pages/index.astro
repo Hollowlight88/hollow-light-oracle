@@ -1,8 +1,32 @@
 ---
-import Layout from '../layouts/RitualLayout.astro';
+const [showFeelings, setShowFeelings] = Astro.useState(false);
+
+// Common feelings of suffering
+const feelings = [
+  "Sad", "Lonely", "Depressed", "Anxious", "Frustrated", "Angry", "Hopeless",
+  "Overwhelmed", "Grieving", "Empty", "Afraid", "Guilty", "Ashamed", "Rejected",
+  "Jealous", "Stressed", "Tired", "Lost", "Powerless"
+];
+
+// Placeholder for what happens when a feeling is selected
+function handleFeelingSelect(feeling) {
+  // TODO: Route to AI glyph generation page or process
+  alert(`You selected: ${feeling}`);
+}
 ---
 
-<Layout>
-  <h1>Hollow Light Oracle</h1>
-  <p>Welcome to the gateway. Begin the journey at <a href="/clarity" style="color: cyan;">/clarity</a>.</p>
-</Layout>
+<html>
+  <head>
+    <title>Hollow Light Glyph Oracle</title>
+  </head>
+  <body class="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
+    <h1 class="text-4xl font-bold mb-8">Hollow Light Glyph Oracle</h1>
+    <div class="flex flex-col gap-6 mb-12 w-full max-w-md">
+      <button
+        class="bg-indigo-600 text-white text-xl py-3 rounded-xl shadow hover:bg-indigo-700 transition"
+        onclick={() => setShowFeelings(true)}
+      >
+        Generate AI Glyph
+      </button>
+      <button
+        class

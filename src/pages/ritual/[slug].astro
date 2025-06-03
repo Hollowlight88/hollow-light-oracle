@@ -1,0 +1,30 @@
+---
+import rituals from '../../data/rituals.json';
+
+const { slug } = Astro.params;
+const ritual = rituals.find(r => r.slug === slug);
+
+if (!ritual) {
+  throw new Error('Ritual not found');
+}
+---
+
+<html>
+  <head>
+    <title>{ritual.name} Ritual – Hollow Light Oracle</title>
+  </head>
+  <body class="p-8 max-w-xl mx-auto">
+    <a href="/" class="text-blue-600 underline">&larr; Back to all rituals</a>
+    <h1 class="text-3xl font-bold mb-2 mt-4">{ritual.name}</h1>
+    <img src={ritual.glyph_img} alt={ritual.name + ' glyph'} class="w-48 mx-auto my-4" />
+    <h2 class="text-xl mt-6 mb-2">Ritual Steps</h2>
+    <ol class="list-decimal pl-6">
+      {ritual.ritual_steps.map(step => <li class="mb-2">{step}</li>)}
+    </ol>
+    <h2 class="text-xl mt-6 mb-2">Meditation</h2>
+    <p class="mb-4">{ritual.meditation}</p>
+    <h2 class="text-lg mb-1">Breathing Method</h2>
+    <p class="mb-6">{ritual.breathing_method === "box" ? "Box Breathing (4-4-4-4)" : ritual.breathing_method}</p>
+    <p class="text-sm text-gray-500">Best performed: {ritual.moon_phase}</p>
+  </body>
+</html>

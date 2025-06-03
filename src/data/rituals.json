@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Clarity",
+    "slug": "clarity",
+    "glyph_prompt": "Minimalist sacred glyph: geometric eye with prism-like fractals. Black ink, white background, no shading.",
+    "glyph_img": "/images/clarity-glyph.png",
+    "ritual_steps": [
+      "Find a quiet space. Sit comfortably.",
+      "Begin box breathing: Inhale for 4 seconds, hold for 4, exhale for 4, hold for 4.",
+      "Repeat for 5 cycles.",
+      "Close your eyes and visualize a crystalline eye before you.",
+      "As you breathe, see fog clearing from the center of the eye.",
+      "When you feel clarity arise, end with gratitude."
+    ],
+    "meditation": "Let the silence inside the breath reveal the shape of clarity. Do not chase thoughts\u2014let them pass through the crystal of your gaze.",
+    "breathing_method": "box",
+    "moon_phase": "Any"
+  },
+  {
+    "name": "Protection",
+    "slug": "protection",
+    "glyph_prompt": "Glyph of three concentric flaming rings, with a void center. Clean linework, no color.",
+    "glyph_img": "/images/protection-glyph.png",
+    "ritual_steps": [
+      "Sit comfortably and place your hands over your heart.",
+      "Visualize three rings of flame encircling you.",
+      "Breathe in: draw energy up from the earth.",
+      "Breathe out: see the flames strengthen.",
+      "Repeat for 7 breaths."
+    ],
+    "meditation": "You are shielded not by force, but by the sacred pattern of your own awareness. Let all that is not you fall away outside the rings.",
+    "breathing_method": "4-7-8",
+    "moon_phase": "Full Moon"
+  },
+  {
+    "name": "Hollowing",
+    "slug": "hollowing",
+    "glyph_prompt": "A downward-pointing eye, lines dissolving toward the base. Minimalist, black on white.",
+    "glyph_img": "/images/hollowing-glyph.png",
+    "ritual_steps": [
+      "Begin in darkness or with eyes closed.",
+      "Take three deep breaths, pausing between each.",
+      "Visualize your thoughts falling downward like sand.",
+      "Repeat silently: 'Let the vessel empty itself.'",
+      "Remain for 2 minutes in silence."
+    ],
+    "meditation": "In emptiness, light grows. Release all striving and allow the hollow to receive what is real.",
+    "breathing_method": "three_deep",
+    "moon_phase": "Waning"
+  }
+]
