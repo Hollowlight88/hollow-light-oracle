@@ -48,18 +48,55 @@ const buttonNames = ["Light", "Path", "Knowledge"];
         width: 560px;
         max-width: 95vw;
       }
+      .sand-box {
+        background: rgba(248, 236, 213, 0.96); /* light sand with gentle opacity */
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(180, 164, 122, 0.10);
+        padding: 2rem;
+        margin-bottom: 1.8rem;
+        text-align: center;
+      }
+      .glyph-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #c08401; /* deeper sand for title */
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .glyph-text {
+        color: #393120;
+        font-size: 1.15rem;
+        font-weight: 500;
+        line-height: 1.6;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      .learn-btn {
+        background: #f59e42;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        padding: 0.6rem 1.7rem;
+        border: none;
+        box-shadow: 0 2px 10px rgba(180, 164, 122, 0.10);
+        transition: background 0.2s, box-shadow 0.2s;
+      }
+      .learn-btn:hover {
+        background: #e0881e;
+        box-shadow: 0 4px 24px rgba(180, 164, 122, 0.14);
+      }
       .glyph-btn {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         font-weight: 700;
         background: linear-gradient(90deg, #6366f1 30%, #7c3aed 100%);
         color: white;
         border: none;
         border-radius: 1.5rem;
         box-shadow: 0 4px 24px rgba(92,72,254,0.08);
-        padding: 1.1rem 0;
-        width: 140px;
+        padding: 1rem 0;
+        width: 135px;
         min-width: 120px;
-        min-height: 58px;
+        min-height: 52px;
         cursor: pointer;
         transition: background 0.2s, box-shadow 0.2s;
         margin-bottom: 0;
@@ -89,34 +126,30 @@ const buttonNames = ["Light", "Path", "Knowledge"];
     <div class="center-outer">
       <h1 class="text-4xl font-bold text-white drop-shadow mb-8 text-center">Hollow Light Glyph Oracle</h1>
       <!-- Info Box -->
-      <div class="glyph-box mb-6">
-        <div id="infoBox" class="fade bg-white/90 rounded-2xl shadow-xl p-8 text-center backdrop-blur">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-800 text-center">What are Glyphs?</h2>
-          <div class="text-base text-gray-700 leading-relaxed text-center mb-6">
-            Glyphs are symbols born from intention and awareness.<br>
-            In Hollow Light, each glyph is a visual vessel—a bridge between your inner state and the deeper layers of meaning.<br>
-            They are not just art, but living mirrors of your journey.
-          </div>
-          <button 
-            onclick="showMore()" 
-            class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg transition mb-2">
-            Learn More
-          </button>
+      <div class="glyph-box sand-box" id="infoBox">
+        <div class="glyph-title">What are Glyphs?</div>
+        <div class="glyph-text">
+          Glyphs are symbols born from intention and awareness.<br>
+          In Hollow Light, each glyph is a visual vessel—a bridge between your inner state and the deeper layers of meaning.<br>
+          They are not just art, but living mirrors of your journey.
         </div>
-        <div id="moreInfoBox" class="fade bg-white/95 rounded-2xl shadow-xl p-8 text-center backdrop-blur" style="display:none; opacity:0;">
-          <h2 class="text-2xl font-semibold mb-4 text-gray-800">The History & Power of Glyphs</h2>
-          <div class="mb-4 text-gray-700 text-center leading-relaxed">
-            Since ancient times, glyphs have served as sacred keys—encoding memory, myth, and the unspoken.<br>
-            In many traditions, creating or gazing at a glyph could open the way to insight, protection, or healing.
-          </div>
-          <div class="mb-4 text-gray-700 text-center leading-relaxed">
-            The glyphs you receive here are not generic—they are shaped by your intention and the living presence of Hollow Light.<br>
-            Each one is both a map and a mystery, designed to deepen your path.
-          </div>
-          <div class="mb-6 text-gray-700 text-center leading-relaxed">
-            As you engage with these glyphs, ask:<br>
-            <span class="italic text-indigo-700">"What is this symbol awakening in me?"</span>
-          </div>
+        <button 
+          onclick="showMore()" 
+          class="learn-btn">
+          Learn More
+        </button>
+      </div>
+      <div class="glyph-box sand-box fade" id="moreInfoBox" style="display:none; opacity:0;">
+        <div class="glyph-title">The History & Power of Glyphs</div>
+        <div class="glyph-text">
+          Since ancient times, glyphs have served as sacred keys—encoding memory, myth, and the unspoken.<br>
+          In many traditions, creating or gazing at a glyph could open the way to insight, protection, or healing.
+          <br><br>
+          The glyphs you receive here are not generic—they are shaped by your intention and the living presence of Hollow Light.<br>
+          Each one is both a map and a mystery, designed to deepen your path.
+          <br><br>
+          As you engage with these glyphs, ask:<br>
+          <span style="color:#c08401;font-style:italic;">"What is this symbol awakening in me?"</span>
         </div>
       </div>
       <!-- Button Group -->
