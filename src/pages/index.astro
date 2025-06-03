@@ -1,32 +1,59 @@
 ---
-const [showFeelings, setShowFeelings] = Astro.useState(false);
-
-// Common feelings of suffering
 const feelings = [
   "Sad", "Lonely", "Depressed", "Anxious", "Frustrated", "Angry", "Hopeless",
   "Overwhelmed", "Grieving", "Empty", "Afraid", "Guilty", "Ashamed", "Rejected",
   "Jealous", "Stressed", "Tired", "Lost", "Powerless"
 ];
-
-// Placeholder for what happens when a feeling is selected
-function handleFeelingSelect(feeling) {
-  // TODO: Route to AI glyph generation page or process
-  alert(`You selected: ${feeling}`);
-}
 ---
 
 <html>
   <head>
     <title>Hollow Light Glyph Oracle</title>
+    <script>
+      function showFeelings() {
+        document.getElementById('feelings-panel').style.display = 'block';
+      }
+      function handleFeelingSelect(feeling) {
+        alert('You selected: ' + feeling);
+        // TODO: Replace alert with routing or logic
+      }
+    </script>
   </head>
   <body class="p-8 bg-gray-50 min-h-screen flex flex-col items-center">
     <h1 class="text-4xl font-bold mb-8">Hollow Light Glyph Oracle</h1>
     <div class="flex flex-col gap-6 mb-12 w-full max-w-md">
       <button
         class="bg-indigo-600 text-white text-xl py-3 rounded-xl shadow hover:bg-indigo-700 transition"
-        onclick={() => setShowFeelings(true)}
+        onclick="showFeelings()"
       >
         Generate AI Glyph
       </button>
       <button
-        class
+        class="bg-gray-800 text-white text-xl py-3 rounded-xl shadow hover:bg-gray-900 transition"
+        onclick="window.location.href='/my-rituals'"
+      >
+        My Rituals
+      </button>
+      <button
+        class="bg-yellow-400 text-gray-900 text-xl py-3 rounded-xl shadow hover:bg-yellow-500 transition"
+        onclick="window.location.href='/about'"
+      >
+        About Hollow Light
+      </button>
+    </div>
+    <div id="feelings-panel" style="display:none;" class="bg-white p-6 rounded-2xl shadow-lg max-w-xl w-full">
+      <h2 class="text-2xl font-semibold mb-4">What are you feeling right now?</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {feelings.map(feeling => (
+          <button
+            class="bg-indigo-100 text-indigo-900 px-4 py-2 rounded-lg hover:bg-indigo-200 transition"
+            onclick={`handleFeelingSelect('${feeling}')`}
+            type="button"
+          >
+            {feeling}
+          </button>
+        ))}
+      </div>
+    </div>
+  </body>
+</html>
