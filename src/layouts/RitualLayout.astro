@@ -1,26 +1,17 @@
 ---
-/*
-  RitualLayout.astro
-  Use this layout to wrap ritual pages.
-  Usage in a ritual page:
-    import RitualLayout from '../../layouts/RitualLayout.astro'
-    ...
-    <RitualLayout>
-      ...ritual content...
-    </RitualLayout>
-*/
+const { title, description, backgroundImage } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <title><slot name="title">Hollow Light Ritual</slot></title>
+    <title>{title ? title + " – Hollow Light Ritual" : "Hollow Light Ritual"}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       body {
         min-height: 100vh;
         margin: 0;
-        background: url('/images/hollowingbg.png') center center / cover no-repeat fixed;
+        background: url({backgroundImage || '/images/hollowingbg.png'}) center center / cover no-repeat fixed;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -32,13 +23,21 @@
         box-shadow: 0 4px 32px rgba(92, 72, 254, 0.08);
         padding: 2.5rem 2rem;
         margin: 2rem;
-        max-width: 560px;
+        max-width: 700px;
         width: 100%;
+      }
+      .ritual-description {
+        font-size: 1.15rem;
+        color: #444;
+        margin-bottom: 1rem;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <main class="ritual-container">
+      {title && <h1 style="text-align:center;margin-bottom:0.5rem">{title}</h1>}
+      {description && <div class="ritual-description">{description}</div>}
       <slot />
     </main>
   </body>
