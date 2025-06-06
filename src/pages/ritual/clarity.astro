@@ -1,10 +1,6 @@
 ---
-
 import BoxBreathing from '../../components/BoxBreathing.jsx'
-
 import RitualLayout from '../../layouts/RitualLayout.astro';
----
-
 
 const title = "Clarity";
 const description = "A ritual to clear the mind and return to presence.";
@@ -12,49 +8,5 @@ const backgroundImage = "/images/monk.png";
 ---
 
 <RitualLayout title={title} description={description} backgroundImage={backgroundImage}>
-  <div class="ritual-body">
-    <h1 class="ritual-title">Clarity</h1>
-    <p class="ritual-text">
-      Let clarity arise with each breath. Return to the center of your awareness.
-    </p>
-
-    <div class="breathing-center">
-      <BoxBreathing client:visible />
-    </div>
-
-    <p class="ritual-instructions">
-      As you finish, notice how the breath has quieted the mind. What do you see more clearly?
-    </p>
-  </div>
-
-  <style>
-    .ritual-body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2rem;
-      color: white;
-      background: rgba(0,0,0,0.5);
-      border-radius: 2rem;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    }
-    .ritual-title {
-      font-size: 2.5rem;
-      margin-bottom: 1.2rem;
-    }
-    .ritual-text, .ritual-instructions {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .breathing-center {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 2rem 0 2rem 0;
-    }
-  </style>
+  <!-- ... ritual content ... -->
 </RitualLayout>

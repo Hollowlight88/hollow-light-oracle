@@ -1,17 +1,17 @@
 ---
 const { title, description, backgroundImage } = Astro.props;
+const bgUrl = backgroundImage || '/images/hollowingbg.png';
 ---
 
 <html lang="en">
   <head>
-    <title>{title ? title + " – Hollow Light Ritual" : "Hollow Light Ritual"}</title>
+    <title>{title ? `${title} – Hollow Light Ritual` : "Hollow Light Ritual"}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      body {
+      body, .ritual-bg {
         min-height: 100vh;
         margin: 0;
-        background: url({backgroundImage || '/images/hollowingbg.png'}) center center / cover no-repeat fixed;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,10 +35,12 @@ const { title, description, backgroundImage } = Astro.props;
     </style>
   </head>
   <body>
-    <main class="ritual-container">
-      {title && <h1 style="text-align:center;margin-bottom:0.5rem">{title}</h1>}
-      {description && <div class="ritual-description">{description}</div>}
-      <slot />
-    </main>
+    <div class="ritual-bg" style={`background: url('${bgUrl}') center center / cover no-repeat fixed; width:100vw; min-height:100vh;`}>
+      <main class="ritual-container">
+        {title && <h1 style="text-align:center;margin-bottom:0.5rem">{title}</h1>}
+        {description && <div class="ritual-description">{description}</div>}
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
